@@ -8,32 +8,31 @@
 import Foundation
 
 class GameViewModel: ObservableObject {
-    @Published var player1 = Player(playerScore: 0, playerName: "player1")
-    @Published var player2 = Player(playerScore: 0, playerName: "player2")
+    @Published var player1 = Player(playerScore: 0, playerName: "Jogador 1")
+    @Published var player2 = Player(playerScore: 0, playerName: "Jogador 2")
+    @Published var isGameOver = false
     
     func increaseScore(player: Player){
+        guard !isGameOver else {
+            return
+        }
         player.increaseScore()
+        checkWinner()
         self.objectWillChange.send()
     }
     func decreaseScore(player: Player){
         player.decreaseScore()
         self.objectWillChange.send()
     }
-    
-    class Player {
-        var score: Int
-        var name: String
-        
-        func increaseScore(){
-            self.score += 1
+    func checkWinner() {
+        if player1.score == 12 || player2.score == 12 {
+            isGameOver = true
         }
-        func decreaseScore(){
-            self.score -= 1
-        }
-        
-        init(playerScore: Int, playerName: String) {
-            self.score = playerScore
-            self.name = playerName
-        }
+    }
+    func restartGame() {
+        self.objectWillChange.send()
+        player1.score = 0
+        player2.score = 0
+        isGameOver = false
     }
 }
