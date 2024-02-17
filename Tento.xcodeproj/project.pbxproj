@@ -8,17 +8,19 @@
 
 /* Begin PBXBuildFile section */
 		E363AF362B7EDFE800F15157 /* TentoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E363AF352B7EDFE800F15157 /* TentoApp.swift */; };
-		E363AF382B7EDFE800F15157 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E363AF372B7EDFE800F15157 /* ContentView.swift */; };
 		E363AF3A2B7EDFEA00F15157 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E363AF392B7EDFEA00F15157 /* Assets.xcassets */; };
 		E363AF3D2B7EDFEA00F15157 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E363AF3C2B7EDFEA00F15157 /* Preview Assets.xcassets */; };
+		E37A870F2B7F651500848227 /* GameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E37A870E2B7F651500848227 /* GameView.swift */; };
+		E37A87142B7F65B900848227 /* GameViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E37A87132B7F65B900848227 /* GameViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		E363AF322B7EDFE800F15157 /* Tento.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Tento.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E363AF352B7EDFE800F15157 /* TentoApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TentoApp.swift; sourceTree = "<group>"; };
-		E363AF372B7EDFE800F15157 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		E363AF392B7EDFEA00F15157 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E363AF3C2B7EDFEA00F15157 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		E37A870E2B7F651500848227 /* GameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameView.swift; sourceTree = "<group>"; };
+		E37A87132B7F65B900848227 /* GameViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,8 +53,8 @@
 		E363AF342B7EDFE800F15157 /* Tento */ = {
 			isa = PBXGroup;
 			children = (
+				E37A87102B7F658800848227 /* Game */,
 				E363AF352B7EDFE800F15157 /* TentoApp.swift */,
-				E363AF372B7EDFE800F15157 /* ContentView.swift */,
 				E363AF392B7EDFEA00F15157 /* Assets.xcassets */,
 				E363AF3B2B7EDFEA00F15157 /* Preview Content */,
 			);
@@ -65,6 +67,31 @@
 				E363AF3C2B7EDFEA00F15157 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		E37A87102B7F658800848227 /* Game */ = {
+			isa = PBXGroup;
+			children = (
+				E37A87122B7F65A600848227 /* ViewModel */,
+				E37A87112B7F659700848227 /* View */,
+			);
+			path = Game;
+			sourceTree = "<group>";
+		};
+		E37A87112B7F659700848227 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				E37A870E2B7F651500848227 /* GameView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		E37A87122B7F65A600848227 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				E37A87132B7F65B900848227 /* GameViewModel.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -137,7 +164,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E363AF382B7EDFE800F15157 /* ContentView.swift in Sources */,
+				E37A87142B7F65B900848227 /* GameViewModel.swift in Sources */,
+				E37A870F2B7F651500848227 /* GameView.swift in Sources */,
 				E363AF362B7EDFE800F15157 /* TentoApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

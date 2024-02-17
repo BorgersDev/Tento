@@ -8,31 +8,63 @@
 import SwiftUI
 
 struct GameView: View {
-    @State private var count = 0
+    
+    @ObservedObject var viewModel: GameViewModel
+    
     var body: some View {
-        VStack {
-                    Text("\(count)")
-                      .font(.largeTitle)
+        HStack {
+            VStack {
+                Text(viewModel.player1.name)
+                    .font(.title)
+
+                Text("\(viewModel.player1.score)")
+                    .font(.largeTitle)
+                
+                HStack {
+                    Button(action: {
+                        viewModel.decreaseScore(player: viewModel.player1)
+                    }) {
+                        Image(systemName: "minus.circle.fill")
+                            .font(.largeTitle)
+                    }
                     
-                    HStack {
-                        Button(action: {
-                            count -= 1
-                        }) {
-                            Image(systemName: "minus.circle")
-                                .font(.largeTitle)
-                        }
-                        
-                        Button(action: {
-                            count += 1
-                        }) {
-                            Image(systemName: "plus.circle")
-                                .font(.largeTitle)
-                        }
+                    Button(action: {
+                        viewModel.increaseScore(player: viewModel.player1)
+                    }) {
+                        Image(systemName: "plus.circle.fill")
+                            .font(.largeTitle)
                     }
                 }
+            }.padding()
+                
+                VStack {
+                    Text(viewModel.player2.name)
+                        .font(.title)
+                    Text("\(viewModel.player2.score)")
+                              .font(.largeTitle)
+                            
+                            HStack {
+                                Button(action: {
+                                    viewModel.decreaseScore(player: viewModel.player2)
+                                }) {
+                                    Image(systemName: "minus.circle.fill")
+                                        .font(.largeTitle)
+                                }
+                                
+                                Button(action: {
+                                    viewModel.increaseScore(player: viewModel.player2)
+                                }) {
+                                    Image(systemName: "plus.circle.fill")
+                                        .font(.largeTitle)
+                                }
+                            }
+                }.padding()
+        }
     }
 }
 
-#Preview {
-    GameView()
+struct GameView_Previews: PreviewProvider {
+    static var previews: some View {
+        GameView(viewModel: GameViewModel())
+    }
 }

@@ -11,7 +11,7 @@ import SwiftUI
 struct TentoApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            GameView(viewModel: GameViewModel())
         }
     }
 }
