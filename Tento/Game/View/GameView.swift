@@ -1,13 +1,13 @@
 //
-//  ContentView.swift
+//  GameView.swift
 //  Tento
 //
-//  Created by Arthur Borges on 15/02/24.
+//  Created by Arthur Borges on 16/02/24.
 //
 
 import SwiftUI
 
-struct ContentView: View {
+struct GameView: View {
     @State private var count = 0
     var body: some View {
         VStack {
@@ -30,9 +30,9 @@ struct ContentView: View {
                         }
                     }
                 }
-            }
     }
+}
 
 #Preview {
-    ContentView()
+    GameView()
 }
