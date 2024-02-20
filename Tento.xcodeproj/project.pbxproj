@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		E356D1102B81108F00F425F1 /* GameModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E356D10F2B81108F00F425F1 /* GameModel.swift */; };
+		E356D1152B83569000F425F1 /* SplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E356D1142B83569000F425F1 /* SplashView.swift */; };
 		E363AF362B7EDFE800F15157 /* TentoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E363AF352B7EDFE800F15157 /* TentoApp.swift */; };
 		E363AF3A2B7EDFEA00F15157 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E363AF392B7EDFEA00F15157 /* Assets.xcassets */; };
 		E363AF3D2B7EDFEA00F15157 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E363AF3C2B7EDFEA00F15157 /* Preview Assets.xcassets */; };
@@ -17,6 +18,7 @@
 
 /* Begin PBXFileReference section */
 		E356D10F2B81108F00F425F1 /* GameModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameModel.swift; sourceTree = "<group>"; };
+		E356D1142B83569000F425F1 /* SplashView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashView.swift; sourceTree = "<group>"; };
 		E363AF322B7EDFE800F15157 /* Tento.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Tento.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E363AF352B7EDFE800F15157 /* TentoApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TentoApp.swift; sourceTree = "<group>"; };
 		E363AF392B7EDFEA00F15157 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -44,6 +46,22 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		E356D1122B83567000F425F1 /* Splash */ = {
+			isa = PBXGroup;
+			children = (
+				E356D1132B83567A00F425F1 /* View */,
+			);
+			path = Splash;
+			sourceTree = "<group>";
+		};
+		E356D1132B83567A00F425F1 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				E356D1142B83569000F425F1 /* SplashView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		E363AF292B7EDFE800F15157 = {
 			isa = PBXGroup;
 			children = (
@@ -63,6 +81,7 @@
 		E363AF342B7EDFE800F15157 /* Tento */ = {
 			isa = PBXGroup;
 			children = (
+				E356D1122B83567000F425F1 /* Splash */,
 				E37A87102B7F658800848227 /* Game */,
 				E363AF352B7EDFE800F15157 /* TentoApp.swift */,
 				E363AF392B7EDFEA00F15157 /* Assets.xcassets */,
@@ -177,6 +196,7 @@
 			files = (
 				E37A87142B7F65B900848227 /* GameViewModel.swift in Sources */,
 				E356D1102B81108F00F425F1 /* GameModel.swift in Sources */,
+				E356D1152B83569000F425F1 /* SplashView.swift in Sources */,
 				E37A870F2B7F651500848227 /* GameView.swift in Sources */,
 				E363AF362B7EDFE800F15157 /* TentoApp.swift in Sources */,
 			);
