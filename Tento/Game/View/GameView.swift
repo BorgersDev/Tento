@@ -2,35 +2,53 @@ import SwiftUI
 struct PlayerNameEditView: View {
     @Binding var playerName: String
     @State private var editedPlayerName: String
-    @State private var isPopoverPresented = false
+    @Binding var isPresented: Bool
 
-    init(playerName: Binding<String>) {
+    init(playerName: Binding<String>, isPresented: Binding<Bool>) {
         self._playerName = playerName
         self._editedPlayerName = State(initialValue: playerName.wrappedValue)
+        self._isPresented = isPresented
     }
 
     var body: some View {
         VStack {
-            TextField("Player Name", text: $editedPlayerName)
-                .textFieldStyle(RoundedBorderTextFieldStyle())
-                .padding()
+            Text("Novo nome :")
+                .font(.title.bold())
+                .padding(.bottom, 10)
+            TextField("Nos", text: $editedPlayerName)
+                .padding(.vertical, 6)
+                .multilineTextAlignment(.center)
+                .overlay(
+                    RoundedRectangle(cornerRadius: 10.0)
+                        .stroke(lineWidth: 0.8)
+                )
+                .frame(width: 100)
+                .disableAutocorrection(true)
+                .autocapitalization(.none)
+//                .padding(.horizontal,100)
 
-            Button("Save") {
+            Button("Salvar") {
                 playerName = editedPlayerName
-                isPopoverPresented = false
+                isPresented = false
             }
-            .padding()
+            .frame(width: 70)
+            .padding(.vertical, 4)
+            .padding(.horizontal, 5)
+            .font(.callout)
+            .background(Color(.blue))
+            .foregroundColor(.white)
+            .cornerRadius(10.0)
+            .padding(.top, 15)
         }
         .padding()
-        .background(Color.white)
     }
 }
-
 struct GameView: View {
+    
     @ObservedObject var viewModel: GameViewModel
-    @State private var isEditingPlayerName = false
+    @State private var isEditingPlayer1Name = false
     @State private var isEditingPlayer2Name = false
-
+    
     var body: some View {
         ZStack {
             HStack {
@@ -38,11 +56,12 @@ struct GameView: View {
                     Text(viewModel.player1.name)
                         .font(.title)
                         .onTapGesture {
-                            self.isEditingPlayerName = true
+                            isEditingPlayer1Name.toggle()
                         }
-                        .popover(isPresented: $isEditingPlayerName, arrowEdge: .bottom) {
-                            PlayerNameEditView(playerName: $viewModel.player1.name)
+                        .sheet(isPresented: $isEditingPlayer1Name){
+                            PlayerNameEditView(playerName: $viewModel.player1.name, isPresented: $isEditingPlayer1Name)
                         }
+
                     Text("\(viewModel.player1.score)")
                         .font(.largeTitle)
                     
@@ -63,36 +82,35 @@ struct GameView: View {
                     }
                 }.padding()
                     
-                VStack {
-                    Text(viewModel.player2.name)
-                        .font(.title)
-                        .onTapGesture {
-                            isEditingPlayer2Name = true
-                        }
-                        .popover(isPresented: $isEditingPlayer2Name, arrowEdge: .bottom) {
-                            PlayerNameEditView(playerName: $viewModel.player2.name)
-                        }
-                    Text("\(viewModel.player2.score)")
-                        .font(.largeTitle)
-                        
-                    HStack {
-                        Button(action: {
-                            viewModel.decreaseScore(player: viewModel.player2)
-                        }) {
-                            Image(systemName: "minus.circle.fill")
-                                .font(.largeTitle)
-                        }
-                        
-                        Button(action: {
-                            viewModel.increaseScore(player: viewModel.player2)
-                        }) {
-                            Image(systemName: "plus.circle.fill")
-                                .font(.largeTitle)
-                        }
-                    }
-                }.padding()
+                    VStack {
+                        Text(viewModel.player2.name)
+                            .font(.title)
+                            .onTapGesture {
+                                isEditingPlayer2Name.toggle()
+                            }
+                            .sheet(isPresented: $isEditingPlayer2Name){
+                                PlayerNameEditView(playerName: $viewModel.player2.name, isPresented: $isEditingPlayer2Name)
+                            }
+                        Text("\(viewModel.player2.score)")
+                                  .font(.largeTitle)
+                                
+                                HStack {
+                                    Button(action: {
+                                        viewModel.decreaseScore(player: viewModel.player2)
+                                    }) {
+                                        Image(systemName: "minus.circle.fill")
+                                            .font(.largeTitle)
+                                    }
+                                    
+                                    Button(action: {
+                                        viewModel.increaseScore(player: viewModel.player2)
+                                    }) {
+                                        Image(systemName: "plus.circle.fill")
+                                            .font(.largeTitle)
+                                    }
+                                }
+                    }.padding()
             }
-
             .alert(isPresented: $viewModel.isGameOver,  content: {
                 Alert(
                     title: Text("🎉 \(viewModel.player1.score == 12 ? viewModel.player1.name : viewModel.player2.name) ganhou!! 🎉"),
@@ -105,7 +123,6 @@ struct GameView: View {
         }
     }
 }
-
 
 struct GameView_Previews: PreviewProvider {
     static var previews: some View {
