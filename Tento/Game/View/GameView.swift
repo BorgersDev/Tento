@@ -1,54 +1,11 @@
 import SwiftUI
-//struct PlayerNameEditView: View {
-//    @Binding var playerName: String
-//    @State private var editedPlayerName: String
-//    @Binding var isPresented: Bool
-//
-//    init(playerName: Binding<String>, isPresented: Binding<Bool>) {
-//        self._playerName = playerName
-//        self._editedPlayerName = State(initialValue: playerName.wrappedValue)
-//        self._isPresented = isPresented
-//    }
-//
-//    var body: some View {
-//        VStack {
-//            Text("Novo nome :")
-//                .font(.title.bold())
-//                .padding(.bottom, 10)
-//            TextField("Nos", text: $editedPlayerName)
-//                .padding(.vertical, 6)
-//                .multilineTextAlignment(.center)
-//                .overlay(
-//                    RoundedRectangle(cornerRadius: 10.0)
-//                        .stroke(lineWidth: 0.8)
-//                )
-//                .frame(width: 100)
-//                .disableAutocorrection(true)
-//                .autocapitalization(.none)
-////                .padding(.horizontal,100)
-//
-//            Button("Salvar") {
-//                playerName = editedPlayerName
-//                isPresented = false
-//            }
-//            .frame(width: 70)
-//            .padding(.vertical, 4)
-//            .padding(.horizontal, 5)
-//            .font(.callout)
-//            .background(Color(.blue))
-//            .foregroundColor(.white)
-//            .cornerRadius(10.0)
-//            .padding(.top, 15)
-//        }
-//        .padding()
-//    }
-//}
 struct GameView: View {
     
     @ObservedObject var viewModel: GameViewModel
     @State private var isEditingPlayer1Name = false
     @State private var isEditingPlayer2Name = false
-    @State private var newUsername = ""
+    @State private var newUsername1 = ""
+    @State private var newUsername2 = ""
     
     var body: some View {
         ZStack {
@@ -60,14 +17,16 @@ struct GameView: View {
                             isEditingPlayer1Name.toggle()
                         }
                         .alert("Mudar Nome", isPresented: $isEditingPlayer1Name) {
-                                TextField("Novo nome", text: $newUsername)
+                                TextField("Novo nome", text: $newUsername1)
+                                .autocorrectionDisabled()
+                                .autocapitalization(.none)
                                    Button ("Salvar"){
-                                           guard !newUsername.isEmpty else {
+                                           guard !newUsername1.isEmpty else {
                                                return
                                            }
-                                             viewModel.player1.name = newUsername
+                                             viewModel.player1.name = newUsername1
                                        }
-                                   Button("Cancel", role: .cancel, action: {})
+                                   Button("Cancelar", role: .cancel, action: {})
                         }
 
 
@@ -97,9 +56,19 @@ struct GameView: View {
                             .onTapGesture {
                                 isEditingPlayer2Name.toggle()
                             }
-//                            .sheet(isPresented: $isEditingPlayer2Name){
-//                                PlayerNameEditView(playerName: $viewModel.player2.name, isPresented: $isEditingPlayer2Name)
-//                            }
+                            .alert("Mudar Nome", isPresented: $isEditingPlayer2Name) {
+                                    TextField("Novo nome", text: $newUsername2)
+                                    .autocorrectionDisabled()
+                                    .autocapitalization(.none)
+                                       Button ("Salvar"){
+                                               guard !newUsername2.isEmpty else {
+                                                   return
+                                               }
+                                                 viewModel.player2.name = newUsername2
+                                           }
+                                       Button("Cancelar", role: .cancel, action: {})
+                            }
+                        
                         Text("\(viewModel.player2.score)")
                                   .font(.largeTitle)
                                 
