@@ -8,8 +8,8 @@
 import Foundation
 
 class GameViewModel: ObservableObject {
-    @Published var player1 = Player(playerScore: 0, playerName: "Jogador 1")
-    @Published var player2 = Player(playerScore: 0, playerName: "Jogador 2")
+    @Published var player1 = Player(playerScore: 0, playerName: "Nós")
+    @Published var player2 = Player(playerScore: 0, playerName: "Eles")
     @Published var isGameOver = false
     
     func increaseScore(player: Player){

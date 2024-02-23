@@ -18,12 +18,26 @@ class Player {
         }
         self.score += 1
     }
+    func increaseByThree() {
+        guard score < 12 else {
+            // player won
+            return
+        }
+        self.score += 3
+    }
     func decreaseScore(){
         guard score > 0 else {
             // does nothing
             return
         }
         self.score -= 1
+    }
+    func decreaseByThree() {
+        guard score > 0 else {
+            // does nothing
+            return
+        }
+        self.score -= 3
     }
     
     init(playerScore: Int, playerName: String) {
