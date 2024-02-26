@@ -20,15 +20,27 @@ class GameViewModel: ObservableObject {
         checkWinner()
         self.objectWillChange.send()
     }
+    
+    func increaseScoreByThree(player: Player){
+        guard !isGameOver else {
+            return
+        }
+        player.increaseByThree()
+        checkWinner()
+        self.objectWillChange.send()
+    }
+    
     func decreaseScore(player: Player){
         player.decreaseScore()
         self.objectWillChange.send()
     }
+    
     func checkWinner() {
         if player1.score == 12 || player2.score == 12 {
             isGameOver = true
         }
     }
+    
     func restartGame() {
         self.objectWillChange.send()
         player1.score = 0

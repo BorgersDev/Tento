@@ -21,21 +21,38 @@ struct GameView: View {
                         Text("\(viewModel.player1.score)")
                             .font(.largeTitle)
                         
-                        HStack {
-                            Button(action: {
-                                viewModel.decreaseScore(player: viewModel.player1)
-                            }) {
-                                Image(systemName: "minus.circle.fill")
-                                    .font(.largeTitle)
-                            }
+                        VStack (spacing: 0) {
                             
                             Button(action: {
                                 viewModel.increaseScore(player: viewModel.player1)
                             }) {
-                                Image(systemName: "plus.circle.fill")
+                                Image(systemName: "plus")
+                                    .frame(width: 60, height: 60)
                                     .font(.largeTitle)
-                            }
-                        }
+                                    
+                            }.background(Color.black)
+                            
+                            Button(action: {
+                                viewModel.increaseScoreByThree(player: viewModel.player1)
+                            }) {
+                                Text("+3")
+                                    .frame(width: 60, height: 60)
+                                    .font(.title)
+                                    
+                            }.background(Color.black)
+            
+                            Button(action: {
+                                viewModel.decreaseScore(player: viewModel.player1)
+                            }) {
+                                Image(systemName: "minus")
+                                    .frame(width: 60, height: 60)
+                                    .font(.largeTitle)
+                                
+                            }.background(Color.black)
+                                
+                        }.foregroundStyle(Color.white)
+                         .cornerRadius(50)
+                         
                     }.padding()
                         
                         VStack {
@@ -60,21 +77,37 @@ struct GameView: View {
                             Text("\(viewModel.player2.score)")
                                       .font(.largeTitle)
                                     
-                                    HStack {
-                                        Button(action: {
-                                            viewModel.decreaseScore(player: viewModel.player2)
-                                        }) {
-                                            Image(systemName: "minus.circle.fill")
-                                                .font(.largeTitle)
-                                        }
+                            VStack (spacing: 0) {
+                                
+                                Button(action: {
+                                    viewModel.increaseScore(player: viewModel.player2)
+                                }) {
+                                    Image(systemName: "plus")
+                                        .frame(width: 60, height: 60)
+                                        .font(.largeTitle)
                                         
-                                        Button(action: {
-                                            viewModel.increaseScore(player: viewModel.player2)
-                                        }) {
-                                            Image(systemName: "plus.circle.fill")
-                                                .font(.largeTitle)
-                                        }
-                                    }
+                                }.background(Color.black)
+                                
+                                Button(action: {
+                                    viewModel.increaseScoreByThree(player: viewModel.player2)
+                                }) {
+                                    Text("+3")
+                                        .frame(width: 60, height: 60)
+                                        .font(.title)
+                                        
+                                }.background(Color.black)
+                
+                                Button(action: {
+                                    viewModel.decreaseScore(player: viewModel.player2)
+                                }) {
+                                    Image(systemName: "minus")
+                                        .frame(width: 60, height: 60)
+                                        .font(.largeTitle)
+                                    
+                                }.background(Color.black)
+                                    
+                            }.foregroundStyle(Color.white)
+                             .cornerRadius(50)
                         }.padding()
                 }
                 .alert(isPresented: $viewModel.isGameOver,  content: {

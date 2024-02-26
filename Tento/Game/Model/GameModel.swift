@@ -23,7 +23,11 @@ class Player {
             // player won
             return
         }
-        self.score += 3
+        switch self.score {
+        case 10 : self.score += 2
+        case 11 : self.score += 1
+        default : self.score += 3
+        }
     }
     func decreaseScore(){
         guard score > 0 else {
@@ -31,13 +35,6 @@ class Player {
             return
         }
         self.score -= 1
-    }
-    func decreaseByThree() {
-        guard score > 0 else {
-            // does nothing
-            return
-        }
-        self.score -= 3
     }
     
     init(playerScore: Int, playerName: String) {
