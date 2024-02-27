@@ -8,7 +8,6 @@ struct GameView: View {
     @State private var isEditingPlayer2Name = false
     @State private var newUsername1 = ""
     @State private var newUsername2 = ""
-    
     var body: some View {
         Group {
             ZStack {
@@ -17,98 +16,22 @@ struct GameView: View {
                         
                         player1Name
                         
-
-                        Text("\(viewModel.player1.score)")
-                            .font(.largeTitle)
+                        player1Score
                         
-                        VStack (spacing: 0) {
-                            
-                            Button(action: {
-                                viewModel.increaseScore(player: viewModel.player1)
-                            }) {
-                                Image(systemName: "plus")
-                                    .frame(width: 60, height: 60)
-                                    .font(.largeTitle)
-                                    
-                            }.background(Color.black)
-                            
-                            Button(action: {
-                                viewModel.increaseScoreByThree(player: viewModel.player1)
-                            }) {
-                                Text("+3")
-                                    .frame(width: 60, height: 60)
-                                    .font(.title)
-                                    
-                            }.background(Color.black)
-            
-                            Button(action: {
-                                viewModel.decreaseScore(player: viewModel.player1)
-                            }) {
-                                Image(systemName: "minus")
-                                    .frame(width: 60, height: 60)
-                                    .font(.largeTitle)
-                                
-                            }.background(Color.black)
-                                
-                        }.foregroundStyle(Color.white)
-                         .cornerRadius(50)
+                        player1Buttons
                          
                     }.padding()
                         
                         VStack {
-                            Text(viewModel.player2.name)
-                                .font(.title)
-                                .onTapGesture {
-                                    isEditingPlayer2Name.toggle()
-                                }
-                                .alert("Mudar Nome", isPresented: $isEditingPlayer2Name) {
-                                        TextField("Novo nome", text: $newUsername2)
-                                        .autocorrectionDisabled()
-                                        .autocapitalization(.none)
-                                           Button ("Salvar"){
-                                                   guard !newUsername2.isEmpty else {
-                                                       return
-                                                   }
-                                                     viewModel.player2.name = newUsername2
-                                               }
-                                           Button("Cancelar", role: .cancel, action: {})
-                                }
                             
-                            Text("\(viewModel.player2.score)")
-                                      .font(.largeTitle)
+                            player2Name
+                            
+                            player2Score
                                     
-                            VStack (spacing: 0) {
-                                
-                                Button(action: {
-                                    viewModel.increaseScore(player: viewModel.player2)
-                                }) {
-                                    Image(systemName: "plus")
-                                        .frame(width: 60, height: 60)
-                                        .font(.largeTitle)
-                                        
-                                }.background(Color.black)
-                                
-                                Button(action: {
-                                    viewModel.increaseScoreByThree(player: viewModel.player2)
-                                }) {
-                                    Text("+3")
-                                        .frame(width: 60, height: 60)
-                                        .font(.title)
-                                        
-                                }.background(Color.black)
-                
-                                Button(action: {
-                                    viewModel.decreaseScore(player: viewModel.player2)
-                                }) {
-                                    Image(systemName: "minus")
-                                        .frame(width: 60, height: 60)
-                                        .font(.largeTitle)
-                                    
-                                }.background(Color.black)
-                                    
-                            }.foregroundStyle(Color.white)
-                             .cornerRadius(50)
+                            player2Buttons
+                            
                         }.padding()
+//                        .rotationEffect(.degrees(180.0))
                 }
                 .alert(isPresented: $viewModel.isGameOver,  content: {
                     Alert(
@@ -149,6 +72,112 @@ extension GameView {
                            }
                        Button("Cancelar", role: .cancel, action: {})
             }
+    }
+}
+
+extension GameView {
+    var player1Score: some View {
+        Text("\(viewModel.player1.score)")
+            .font(.largeTitle)
+    }
+}
+extension GameView {
+    var player1Buttons: some View {
+        VStack (spacing: 0) {
+            
+            Button(action: {
+                viewModel.increaseScore(player: viewModel.player1)
+            }) {
+                Image(systemName: "plus")
+                    .frame(width: 60, height: 60)
+                    .font(.largeTitle)
+                    
+            }.background(Color.black)
+            
+            Button(action: {
+                viewModel.increaseScoreByThree(player: viewModel.player1)
+            }) {
+                Text("+3")
+                    .frame(width: 60, height: 60)
+                    .font(.title)
+                    
+            }.background(Color.black)
+
+            Button(action: {
+                viewModel.decreaseScore(player: viewModel.player1)
+            }) {
+                Image(systemName: "minus")
+                    .frame(width: 60, height: 60)
+                    .font(.largeTitle)
+                    
+                
+            }.background(Color.black)
+                
+        }.foregroundStyle(Color.white)
+         .cornerRadius(50)
+    }
+}
+
+extension GameView {
+    var player2Name: some View {
+        Text(viewModel.player2.name)
+            .font(.title)
+            .onTapGesture {
+                isEditingPlayer2Name.toggle()
+            }
+            .alert("Mudar Nome", isPresented: $isEditingPlayer2Name) {
+                    TextField("Novo nome", text: $newUsername2)
+                    .autocorrectionDisabled()
+                    .autocapitalization(.none)
+                       Button ("Salvar"){
+                               guard !newUsername2.isEmpty else {
+                                   return
+                               }
+                                 viewModel.player2.name = newUsername2
+                           }
+                       Button("Cancelar", role: .cancel, action: {})
+            }
+    }
+}
+extension GameView {
+    var player2Score: some View {
+        Text("\(viewModel.player2.score)")
+                  .font(.largeTitle)
+    }
+}
+extension GameView {
+    var player2Buttons: some View {
+        VStack (spacing: 0) {
+            
+            Button(action: {
+                viewModel.increaseScore(player: viewModel.player2)
+            }) {
+                Image(systemName: "plus")
+                    .frame(width: 60, height: 60)
+                    .font(.largeTitle)
+                    
+            }.background(Color.black)
+            
+            Button(action: {
+                viewModel.increaseScoreByThree(player: viewModel.player2)
+            }) {
+                Text("+3")
+                    .frame(width: 60, height: 60)
+                    .font(.title)
+                    
+            }.background(Color.black)
+
+            Button(action: {
+                viewModel.decreaseScore(player: viewModel.player2)
+            }) {
+                Image(systemName: "minus")
+                    .frame(width: 60, height: 60)
+                    .font(.largeTitle)
+                
+            }.background(Color.black)
+                
+        }.foregroundStyle(Color.white)
+         .cornerRadius(50)
     }
 }
 
