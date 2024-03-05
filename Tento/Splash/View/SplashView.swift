@@ -15,7 +15,10 @@ struct SplashView: View {
             VStack {
                 Image(colorScheme == .light ? "tentoBlack" : "tentoWhite")
                     .resizable()
-                    .ignoresSafeArea(.all)
+                    .scaledToFit()
+                    .frame(maxWidth: .infinity, maxHeight: .infinity)
+                    .ignoresSafeArea()
+
             }
         }.background(colorScheme == . light ? Color.offWhite : Color.darkEnd)
         .onAppear{
