@@ -11,11 +11,13 @@ struct SplashView: View {
     @Environment(\.colorScheme) var colorScheme
     @State private var isActive: Bool = false
     var body: some View {
-        
-        VStack {
-            Image(colorScheme == .light ? "tentoBlack" : "tentoWhite")
-                .resizable()
-        }
+        ZStack {
+            VStack {
+                Image(colorScheme == .light ? "tentoBlack" : "tentoWhite")
+                    .resizable()
+                    .ignoresSafeArea(.all)
+            }
+        }.background(colorScheme == . light ? Color.offWhite : Color.darkEnd)
         .onAppear{
             DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
                 isActive = true

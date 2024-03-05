@@ -12,8 +12,8 @@
 		E363AF362B7EDFE800F15157 /* TentoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E363AF352B7EDFE800F15157 /* TentoApp.swift */; };
 		E363AF3A2B7EDFEA00F15157 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E363AF392B7EDFEA00F15157 /* Assets.xcassets */; };
 		E363AF3D2B7EDFEA00F15157 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E363AF3C2B7EDFEA00F15157 /* Preview Assets.xcassets */; };
-		E37A870F2B7F651500848227 /* GameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E37A870E2B7F651500848227 /* GameView.swift */; };
 		E37A87142B7F65B900848227 /* GameViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E37A87132B7F65B900848227 /* GameViewModel.swift */; };
+		E3B4BE352B8FE09E00B4CF4B /* GameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3B4BE342B8FE09E00B4CF4B /* GameView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -23,8 +23,8 @@
 		E363AF352B7EDFE800F15157 /* TentoApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TentoApp.swift; sourceTree = "<group>"; };
 		E363AF392B7EDFEA00F15157 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E363AF3C2B7EDFEA00F15157 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		E37A870E2B7F651500848227 /* GameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameView.swift; sourceTree = "<group>"; };
 		E37A87132B7F65B900848227 /* GameViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewModel.swift; sourceTree = "<group>"; };
+		E3B4BE342B8FE09E00B4CF4B /* GameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -111,7 +111,7 @@
 		E37A87112B7F659700848227 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				E37A870E2B7F651500848227 /* GameView.swift */,
+				E3B4BE342B8FE09E00B4CF4B /* GameView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -196,8 +196,8 @@
 			files = (
 				E37A87142B7F65B900848227 /* GameViewModel.swift in Sources */,
 				E356D1102B81108F00F425F1 /* GameModel.swift in Sources */,
+				E3B4BE352B8FE09E00B4CF4B /* GameView.swift in Sources */,
 				E356D1152B83569000F425F1 /* SplashView.swift in Sources */,
-				E37A870F2B7F651500848227 /* GameView.swift in Sources */,
 				E363AF362B7EDFE800F15157 /* TentoApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -335,6 +335,9 @@
 				DEVELOPMENT_TEAM = 4522PA6SW9;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Tento/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "";
+				INFOPLIST_KEY_LSApplicationCategoryType = "";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -365,6 +368,9 @@
 				DEVELOPMENT_TEAM = 4522PA6SW9;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Tento/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "";
+				INFOPLIST_KEY_LSApplicationCategoryType = "";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
