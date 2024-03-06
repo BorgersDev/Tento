@@ -61,7 +61,7 @@ struct GameView: View {
                 .alert(isPresented: $viewModel.isGameOver,  content: {
                     Alert(
                         title: Text("\(viewModel.player1.name)  \(viewModel.player1.score) x \(viewModel.player2.score)  \(viewModel.player2.name)"),
-                        message: Text("Clique abaixo para começar a próxima partida."),
+                        message: Text("Deseja reiniciar a partida?"),
                         dismissButton: .default(Text("Reiniciar")) {
                             viewModel.restartGame()
                         }
@@ -133,7 +133,7 @@ extension GameView {
 extension GameView {
     var player1Score: some View {
         Text("\(viewModel.player1.score)")
-            .font(.system(size: 80))
+            .font(.system(size: 80).bold())
     }
 }
 extension GameView {
@@ -227,7 +227,7 @@ extension GameView {
 extension GameView {
     var player2Score: some View {
         Text("\(viewModel.player2.score)")
-            .font(.system(size: 80))
+            .font(.system(size: 80).bold())
     }
 }
 extension GameView {
