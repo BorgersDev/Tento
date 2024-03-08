@@ -60,7 +60,8 @@ struct GameView: View {
                 }
                 .alert(isPresented: $viewModel.isGameOver,  content: {
                     Alert(
-                        title: Text("\(viewModel.player1.name)  \(viewModel.player1.score) x \(viewModel.player2.score)  \(viewModel.player2.name)"),
+                        title: Text(viewModel.player1.score == 12 ?
+                                    "🏆 \(viewModel.player1.name) 🏆 x  💩 \(viewModel.player2.name) 💩" :  "💩 \(viewModel.player1.name) 💩 x 🏆 \(viewModel.player2.name) 🏆"),
                         message: Text("Deseja reiniciar a partida?"),
                         dismissButton: .default(Text("Reiniciar")) {
                             viewModel.restartGame()
